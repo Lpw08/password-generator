@@ -13,4 +13,49 @@ function writePassword() {
   passwordText.value = password;
 
 }
+function generatePassword() {
+  var size = prompt("What is the password length 8-128?")
+  console.log(size)
 
+  if (size > 7 && size < 129) {
+    return processPassword(size)
+  }
+  else {
+    alert("Incorrect Value must be between 8-128")
+
+  }
+}
+function processPassword(size) {
+  var finalPassWord = ""
+  var isLowerCase = confirm("Do you want to include lowercase characters?")
+  var isUpperCase = confirm("Do you want to include uppercase characters?")
+  var isnumeric = confirm("Do you want to include Numeric characters?")
+  var isspecial = confirm("Do you want to include special characters?")
+  for (let i = 0; i < size; i++) {
+
+
+    if (isLowerCase && finalPassWord.length<size) {
+      var position = Math.floor(Math.random() * LowerCase.length)
+      finalPassWord = finalPassWord + LowerCase.charAt(position)
+
+    }
+    if (isUpperCase && finalPassWord.length<size) {
+      var position = Math.floor(Math.random() * UpperCasepper.length)
+      finalPassWord = finalPassWord + UpperCasepper.charAt(position)
+    }
+    if (isnumeric && finalPassWord.length<size) {
+      var position = Math.floor(Math.random() * numeric.length)
+      finalPassWord = finalPassWord + numeric.charAt(position)
+    }
+    if (isspecial && finalPassWord.length<size) {
+      var position = Math.floor(Math.random() * special.length)
+      finalPassWord = finalPassWord + special.charAt(position)
+    }
+  }
+  return finalPassWord
+}
+
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
