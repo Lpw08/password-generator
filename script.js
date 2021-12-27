@@ -1,4 +1,5 @@
 // Assignment Code
+// Variables to set the code characters
 var generateBtn = document.querySelector("#generate");
 var LowerCase = "abcdefghijklmnopqrstuvwxyz"
 var UpperCasepper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -16,7 +17,7 @@ function writePassword() {
 function generatePassword() {
   var size = prompt("What is the password length 8-128?")
   console.log(size)
-
+  // if values/ min max criteria for setting password length
   if (size > 7 && size < 129) {
     return processPassword(size)
   }
@@ -25,6 +26,7 @@ function generatePassword() {
 
   }
 }
+//Variables to set a character/password criteria
 function processPassword(size) {
   var finalPassWord = ""
   var isLowerCase = confirm("Do you want to include lowercase characters?")
@@ -33,29 +35,26 @@ function processPassword(size) {
   var isspecial = confirm("Do you want to include special characters?")
   for (let i = 0; i < size; i++) {
 
-
-    if (isLowerCase && finalPassWord.length<size) {
+    // if values for the chosen criteria
+    if (isLowerCase && finalPassWord.length < size) {
       var position = Math.floor(Math.random() * LowerCase.length)
       finalPassWord = finalPassWord + LowerCase.charAt(position)
 
     }
-    if (isUpperCase && finalPassWord.length<size) {
+    if (isUpperCase && finalPassWord.length < size) {
       var position = Math.floor(Math.random() * UpperCasepper.length)
       finalPassWord = finalPassWord + UpperCasepper.charAt(position)
     }
-    if (isnumeric && finalPassWord.length<size) {
+    if (isnumeric && finalPassWord.length < size) {
       var position = Math.floor(Math.random() * numeric.length)
       finalPassWord = finalPassWord + numeric.charAt(position)
     }
-    if (isspecial && finalPassWord.length<size) {
+    if (isspecial && finalPassWord.length < size) {
       var position = Math.floor(Math.random() * special.length)
       finalPassWord = finalPassWord + special.charAt(position)
     }
-  }
+  }// final password
   return finalPassWord
 }
-
-
-
-// Add event listener to generate button
+// event listener to generate button
 generateBtn.addEventListener("click", writePassword);
